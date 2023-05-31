@@ -62,7 +62,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/pemesan', [PemesanController::class, 'index'])->name('/pemesan');
     Route::get('/client', [ClientController::class, 'index'])->name('/client');
+
     Route::get('/akun', [AkunController::class, 'index'])->name('/akun');
+    Route::get('/akun/{id}/edit-akun', [AkunController::class, 'getAkun'])->name('editakun');
 
     // jasa Set
     Route::get('/produk', [ProdukController::class, 'index'])->name('/produk');

@@ -26,7 +26,6 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -36,12 +35,12 @@
                             <td>{{$a->id}}</td>
                             <td>{{$a->name}}</td>
                             <td>{{$a->email}}</td>
-                            <td></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">
-                                        Detail
-                                    </button>
-                                </td>
+                            <td>
+                                <a href="/akun/{{ $a->id }}/edit-akun"
+                                    class="btn btn-outline-warning btn-sm">Edit</a>
+                                <a href="/akun/{{ $a->id }}/hapus-akun"
+                                    class="btn btn-outline-danger btn-sm">Hapus</a>
+                            </td>
                             </tr>
                             @endforeach
                         </tbody>

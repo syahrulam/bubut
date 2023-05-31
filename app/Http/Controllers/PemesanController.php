@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Pesanan;
+use App\Models\Produk;
 
 class PemesanController extends Controller
 {
@@ -15,7 +16,6 @@ class PemesanController extends Controller
     {
         $pesanan = Pesanan::all();
         return view('pemesan',compact('pesanan'));
-        
     }
 
     public function store(Request $request){
@@ -33,26 +33,14 @@ class PemesanController extends Controller
        public function editpemesananproses(Request $request, $id)
        {
            $pemesanan = Produk::findOrFail($id);
-    
            $pemesanan->nama = $request->input('namaproduk');
            $pemesanan->no_wa = $request->input('no_wa');
-           $pemasanan->alamat = $request->input('alamat');
+           $pemesanan->alamat = $request->input('alamat');
            $pemesanan->pesanan = $request->input('pesanan');
            $pemesanan->estimasi = $request->input('estimasi');
            $pemesanan->harga  = $request->input('harga');
    
-           if ($request->hasFile('image')) {
-               // Hapus file lama
-               Storage::delete($pemasanan->image);
-   
-               // Upload file baru
-               $file = $request->file('image');
-               $path = $file->store('public/images');
-   
-               $pemesanan->image = $path;
-           }
-   
-           $pemasanan->save();
+           $pemesanan->save();
    
            return redirect()->route('soal-kuis')->with('success', 'Soal berhasil diperbarui.');
        }

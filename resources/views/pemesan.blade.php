@@ -36,9 +36,12 @@
                                 <td>{{$c->no_wa}}</td>
                                 <td>{{ \Carbon\Carbon::parse($c->estimasi)->format('Y-m-d')}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">
-                                        Detail
-                                    </button>
+                                        <select class="form-control select choose" name="konfirmasi">
+                                            <option value=""> -- Pilih Aksi -- </option>
+                                            <option value="Terima">Terima</option>
+                                            <option value="Tolak">Tolak</option>
+                                            <option value="Abaikan">Abaikan</option>
+                                        </select>
                                 </td>
                             </tr>
                         @endforeach

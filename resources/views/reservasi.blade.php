@@ -36,11 +36,13 @@
                                 <td>{{$reservasi->jasa}}</td>
                                 <td>{{$reservasi->estimasi}}</td>
                                 <td>{{$reservasi->keterangan}}</td>
-                             
                                 <td>
-                                    <button type="button" class="btn btn-warning">
-                                        Detail
-                                    </button>
+                                        <select class="form-control select choose" name="konfirmasi">
+                                            <option value=""> -- Pilih Aksi -- </option>
+                                            <option value="Terima">Terima</option>
+                                            <option value="Tolak">Tolak</option>
+                                            <option value="Abaikan">Abaikan</option>
+                                        </select>
                                 </td>
                             </tr>
                             @endforeach   

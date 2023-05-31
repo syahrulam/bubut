@@ -35,11 +35,11 @@
                     <span>Daftar Reservasi</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('/client') }}" aria-expanded="true">
                     <span>Client</span>
                 </a>
-            </li>
+            </li> --}}
             <!-- Akun Admin -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
