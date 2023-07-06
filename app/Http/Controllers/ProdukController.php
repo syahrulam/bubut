@@ -42,7 +42,7 @@ class ProdukController extends Controller
             $file = $request->file('image');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->storeAs('image/produk/',$filename);
+            $file->storeAs('public/image/produk', $filename);
             $produk->image = $filename;
         }
         $produk->save();
@@ -65,21 +65,21 @@ class ProdukController extends Controller
    
                // Upload file baru
                $file = $request->file('image');
-               $path = $file->store('public/images');
+               $path = $file->store('public/image/produk');
    
                $barang->image = $path;
            }
    
            $barang->save();
    
-           return redirect()->route('soal-kuis')->with('success', 'Soal berhasil diperbarui.');
+           return redirect('/produk');
        }
 
        public function hapusproduk($id)
        {
            DB::table('barang')->where('id',$id)->delete();
    
-           return redirect('/barang');
+           return redirect('/produk');
        }
 
 }

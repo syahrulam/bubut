@@ -10,19 +10,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\JasaController;
 use App\Http\Controllers\ReservasiController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 //halaman pengunjung
 // Client Start
-Route::get('/', [PengunjungController::class, 'index'])->name('/');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/transaksi', [PengunjungController::class, 'transaksi'])->name('transaksi');
 //fungsi jalur
 // Client End
 // auth login start
@@ -40,7 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/jasa-tambah', [JasaController::class, 'tambahjasa'])->name('jasa-tambah');
     Route::post('/jasa-prosestambah', [JasaController::class, 'addprosesjasa'])->name('jasa-prosestambah');
     Route::get('/jasa/{id}/edit-jasa', [JasaController::class, 'editjasa'])->name('edit-jasa');
-    Route::post('/jasa/{id}/edit-jasa-proses', [JasaController::class, 'editjasaproses'])->name('edit-jasa-proses');
+    Route::post('/jasa/{id}/edit-jasa-proses', [JasaController::class, 'update'])->name('edit-jasa-proses');
     Route::get('/jasa/{id}/hapus-jasa', [JasaController::class, 'hapusjasa'])->name('hapus-jasa');
     //jasa End
 
@@ -68,12 +60,12 @@ Route::middleware(['auth'])->group(function(){
 
     // jasa Set
     Route::get('/produk', [ProdukController::class, 'index'])->name('/produk');
-    Route::get('/produk/{id}/lihat-produk', [produkController::class, 'lihatproduk'])->name('lihat-produk');
-    Route::get('/produk-tambah', [produkController::class, 'tambahproduk'])->name('produk-tambah');
-    Route::post('/produk-prosestambah', [produkController::class, 'addprosesproduk'])->name('produk-prosestambah');
-    Route::get('/produk/{id}/edit-produk', [produkController::class, 'editproduk'])->name('edit-produk');
-    Route::post('/produk/{id}/edit-produk-proses', [produkController::class, 'editprodukproses'])->name('edit-produk-proses');
-    Route::get('/produk/{id}/hapus-produk', [produkController::class, 'hapusproduk'])->name('hapus-produk');
+    Route::get('/produk/{id}/lihat-produk', [ProdukController::class, 'lihatproduk'])->name('lihat-produk');
+    Route::get('/produk-tambah', [ProdukController::class, 'tambahproduk'])->name('produk-tambah');
+    Route::post('/produk-prosestambah', [ProdukController::class, 'addprosesproduk'])->name('produk-prosestambah');
+    Route::get('/produk/{id}/edit-produk', [ProdukController::class, 'editproduk'])->name('edit-produk');
+    Route::post('/produk/{id}/edit-produk-proses', [ProdukController::class, 'editprodukproses'])->name('edit-produk-proses');
+    Route::get('/produk/{id}/hapus-produk', [ProdukController::class, 'hapusproduk'])->name('hapus-produk');
     //jasa End
 
     Route::get('/logout', function (){

@@ -24,4 +24,9 @@ class PengunjungController extends Controller
    
            return redirect('/barang');
        }
+       public function transaksi()
+       {
+          
+           return view ('transaksi');
+       }
 }

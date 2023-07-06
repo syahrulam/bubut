@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Jasa;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class JasaController extends Controller
 {
@@ -44,15 +45,13 @@ class JasaController extends Controller
     
        }
 
-       public function editprodukproses(Request $request, $id)
+       public function update(Request $request, $id)
        {
            $jasa = Jasa::findOrFail($id);
-    
+   
            $jasa->nama_jasa = $request->input('nama_jasa');
            $jasa->deskripsi = $request->input('deskripsi');
-           $jasa->image = $request->input('image');
-         
-
+   
            if ($request->hasFile('image')) {
                // Hapus file lama
                Storage::delete($jasa->image);
@@ -68,6 +67,7 @@ class JasaController extends Controller
    
            return redirect()->route('jasa')->with('success', 'Soal berhasil diperbarui.');
        }
+
        public function hapusjasa($id)
        {
            DB::table('jasas')->where('id',$id)->delete();

@@ -39,7 +39,7 @@
                                 <td>
                                         <select class="form-control select choose" name="konfirmasi">
                                             <option value=""> -- Pilih Aksi -- </option>
-                                            <option value="Terima">Terima</option>
+                                            {{-- <option value="Terima"><a href="{{ route('aksi-terima') }}">Terima</a></option> --}}
                                             <option value="Tolak">Tolak</option>
                                             <option value="Abaikan">Abaikan</option>
                                         </select>
